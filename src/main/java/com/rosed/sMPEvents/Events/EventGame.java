@@ -4,6 +4,7 @@ import com.rosed.sMPEvents.EventState;
 import com.rosed.sMPEvents.SMPEvents;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
 import java.util.List;
@@ -18,11 +19,11 @@ public abstract class EventGame {
     public void stop() {}
 
     public void registerListeners() {
-        listeners.forEach(listener -> {
-            Bukkit.getPluginManager().registerEvents(listener, SMPEvents.getInstance());
-        });
+        listeners.forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, SMPEvents.getInstance()));
     };
 
-    public abstract void unregisterListeners();
+    public void unregisterListeners() {
+        listeners.forEach(HandlerList::unregisterAll);
+    };
 
 }

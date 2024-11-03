@@ -1,0 +1,7 @@
+name: SMPEvents
+version: '1.0-SNAPSHOT'
+main: com.rosed.sMPEvents.SMPEvents
+api-version: '1.20'
+authors: [ CenturyOrb ]
+description: Common Minecraft utility classes.
+website: https://github.com/CenturyOrb
