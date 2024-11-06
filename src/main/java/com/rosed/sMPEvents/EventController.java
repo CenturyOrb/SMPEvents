@@ -1,8 +1,6 @@
 package com.rosed.sMPEvents;
 
-import com.rosed.sMPEvents.Events.Event;
-import com.rosed.sMPEvents.Utils.Util;
-import org.bukkit.Bukkit;
+import com.rosed.sMPEvents.Events.EventGame;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -10,25 +8,40 @@ public enum EventController {
     INSTANCE;
 
     private BukkitTask eventTimer;
-    private Event currentEvent = null;
-    private EventState state = EventState.WAITING;
+    private EventGame currentEvent = null;
 
+    /**
+     * Repeating task that selects random event to run
+     */
     EventController() {
         eventTimer = new BukkitRunnable() {
             @Override
             public void run() {
-                // select a random event and prepare//
-                Bukkit.broadcastMessage("EventController has selected a new Event");
-                Bukkit.broadcastMessage("Selected random event: " + selectRandomEvent().toString());
+                // select a random event and prepare //
             }
-        }.runTaskTimer(SMPEvents.getInstance(), 0, 20 * 60 * 1);
+        }.runTaskTimer(SMPEvents.getInstance(), 0, 20 * 60 * 10);
     }
 
-    private Event selectRandomEvent() {
-        return Util.getRandomEnum(Event.class);
-    }
-
+    /**
+     * State before the game starts, time for players to join
+     * Starts the lobby countdown
+     */
     private void prepare() {
+        // changes the currentEvent variable
+        // change event state
+        // Gives 15 minutes for player to join the lobby
+        // last 1 minute countdown displays every 15 seconds
+        // last 10 seconds countdown displays every 1 second
+        // run start after countdown is over (make sure to cancel the task)
 
+    }
+
+    public static void countdown() {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+
+            }
+        }.runTaskTimer(SMPEvents.getInstance(), 0, 20 * 60 * 10);
     }
 }

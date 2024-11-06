@@ -1,9 +1,13 @@
-com/rosed/sMPEvents/Events/Event.class
+com/rosed/sMPEvents/EventController$2.class
 com/rosed/sMPEvents/EventState.class
+com/rosed/sMPEvents/Utils/Util.class
+com/rosed/sMPEvents/EventController.class
+com/rosed/sMPEvents/Events/Event.class
+com/rosed/sMPEvents/Commands/DebugCommands.class
 com/rosed/sMPEvents/Events/EventGame.class
 com/rosed/sMPEvents/Events/Bait.class
-com/rosed/sMPEvents/Utils/Util.class
+com/rosed/sMPEvents/Commands/DebugCommands$1.class
 com/rosed/sMPEvents/EventController$1.class
-com/rosed/sMPEvents/EventController.class
+com/rosed/sMPEvents/Events/Parkour.class
 com/rosed/sMPEvents/Listeners/BaitListener.class
 com/rosed/sMPEvents/SMPEvents.class

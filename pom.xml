@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.rosed</groupId>
-    <artifactId>smpevents</artifactId>
+    <artifactId>SMPEvents</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -67,6 +67,31 @@
             <artifactId>paper-api</artifactId>
             <version>1.20.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.34</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.revxrsal</groupId>
+            <artifactId>lamp.common</artifactId>
+            <version>4.0.0-beta.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.revxrsal</groupId>
+            <artifactId>lamp.paper</artifactId>
+            <version>4.0.0-beta.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.revxrsal</groupId>
+            <artifactId>lamp.bukkit</artifactId>
+            <version>4.0.0-beta.17</version>
         </dependency>
     </dependencies>
 </project>

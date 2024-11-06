@@ -1,8 +1,10 @@
+/home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Commands/DebugCommands.java
 /home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/EventController.java
 /home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/EventState.java
 /home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Events/Bait.java
 /home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Events/Event.java
 /home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Events/EventGame.java
+/home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Events/Parkour.java
 /home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Listeners/BaitListener.java
 /home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/SMPEvents.java
 /home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Utils/Util.java

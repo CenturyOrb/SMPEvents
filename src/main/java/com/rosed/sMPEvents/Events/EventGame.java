@@ -2,6 +2,7 @@ package com.rosed.sMPEvents.Events;
 
 import com.rosed.sMPEvents.EventState;
 import com.rosed.sMPEvents.SMPEvents;
+import lombok.Data;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
@@ -9,6 +10,7 @@ import org.bukkit.event.Listener;
 
 import java.util.List;
 
+@Data
 public abstract class EventGame {
 
     private List<Player> players;
