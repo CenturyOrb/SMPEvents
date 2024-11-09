@@ -16,6 +16,7 @@ public final class SMPEvents extends JavaPlugin {
         instance = this;
         startEventController();
         registerCommands();
+        getLogger().info("2");
     }
 
     @Override
@@ -27,7 +28,7 @@ public final class SMPEvents extends JavaPlugin {
      * Initiates EventController
      * @return EventController
      */
-    private EventController startEventController() { return EventController.INSTANCE; }
+    private void startEventController() { EventController eventController = EventController.INSTANCE; }
 
     /**
      * Registers all commands
@@ -37,6 +38,6 @@ public final class SMPEvents extends JavaPlugin {
         lamp.register(new DebugCommands());
     }
 
-
     public static SMPEvents getInstance() { return instance; }
+
 }
