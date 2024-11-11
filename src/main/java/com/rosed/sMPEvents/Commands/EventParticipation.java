@@ -44,7 +44,14 @@ public class EventParticipation {
         // Teleport player to where they were before they joined the event
         // Add player to the players list
         EventGame eventGame = EventController.getCurrentEvent();
-        eventGame.removePlayer(player);
+        if (!eventGame.getPlayers().contains(player.getUniqueId())) {
+            player.sendMessage("You are not in an event");
+            return;
+        }
+
+        player.teleport(PlayerManager.getPlayerLoc().get(player.getUniqueId()));
+        eventGame.getPlayers().remove(player.getUniqueId());
+        PlayerManager.getPlayerLoc().remove(player.getUniqueId());
     }
 
 }

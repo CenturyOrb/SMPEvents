@@ -37,7 +37,6 @@ public abstract class EventGame {
 
     public List<UUID> getPlayers() { return playerUUIDs; }
     public abstract boolean addPlayer(Player player);
-    public void removePlayer(Player player) { playerUUIDs.remove(player.getUniqueId()); }
 
     public EventState getState() { return state; }
     public void setState(EventState state) { this.state = state; }
