@@ -3,13 +3,16 @@ package com.rosed.sMPEvents.Commands;
 import com.rosed.sMPEvents.EventController;
 import com.rosed.sMPEvents.Events.Event;
 import com.rosed.sMPEvents.Events.EventGame;
+import com.rosed.sMPEvents.PlayerManager;
 import com.rosed.sMPEvents.SMPEvents;
+import com.rosed.sMPEvents.Utils.Util;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
-import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import revxrsal.commands.annotation.Command;
+
+import java.util.UUID;
 
 public class DebugCommands {
 
@@ -34,16 +37,16 @@ public class DebugCommands {
         }.runTaskTimer(SMPEvents.getInstance(), 0, 20);
     }
 
-    @Command("randomevent")
-    public void randomEvent(Player player) {
-        try  {
-            Event randomEvent = Event.getRandomEvent();
-            Bukkit.getServer().broadcast(Component.text("Randomly selected event: " + randomEvent));
+    @Command("printloc")
+    public void printloc(Player player) {
+        player.sendMessage(PlayerManager.getPlayerLoc().toString());
+    }
 
-            EventGame eventInstance = (EventGame) randomEvent.getEventClass().getDeclaredConstructor().newInstance();
-            Bukkit.getServer().broadcast(Component.text("Created instance: "  + eventInstance));
-        }catch (Exception e) {
-            e.printStackTrace();
+    @Command("printlist")
+    public void printlist(Player player) {
+        player.sendMessage("printlist: ");
+        for (UUID uuid : EventController.getCurrentEvent().getPlayers()) {
+            player.sendMessage(Component.text(Bukkit.getPlayer(uuid).getName()));
         }
     }
 

@@ -69,5 +69,7 @@ public enum EventController {
         }.runTaskTimer(SMPEvents.getInstance(), 0,20);
     }
 
+    public static EventGame getCurrentEvent() { return currentEvent; }
+
     public static int getEventCountdownSeconds() { return eventCountdownSeconds; }
 }

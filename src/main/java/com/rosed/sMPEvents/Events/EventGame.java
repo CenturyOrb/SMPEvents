@@ -2,26 +2,30 @@ package com.rosed.sMPEvents.Events;
 
 import com.rosed.sMPEvents.EventState;
 import com.rosed.sMPEvents.SMPEvents;
-import com.rosed.sMPEvents.Utils.Util;
-import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public abstract class EventGame {
 
-    private List<Player> players;
-    private List<Listener> listeners;
-    private EventState state;
+    protected List<UUID> playerUUIDs;
+    protected List<Listener> listeners;
+    protected EventState state;
 
-    public void start() {
-        Util.broadcastMessage(Component.text("EventGame.start()"));
+    EventGame() {
+        playerUUIDs = new ArrayList<>();
+        listeners = new ArrayList<>();
+        state = EventState.PREPARE;
     }
 
-    public void stop() {}
+    public abstract void start();
+
+    public abstract void stop();
 
     public void registerListeners() {
         listeners.forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, SMPEvents.getInstance()));
@@ -31,6 +35,11 @@ public abstract class EventGame {
         listeners.forEach(HandlerList::unregisterAll);
     };
 
+    public List<UUID> getPlayers() { return playerUUIDs; }
+    public abstract boolean addPlayer(Player player);
+    public void removePlayer(Player player) { playerUUIDs.remove(player.getUniqueId()); }
+
+    public EventState getState() { return state; }
     public void setState(EventState state) { this.state = state; }
 
 }

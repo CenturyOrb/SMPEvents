@@ -1,6 +1,7 @@
 package com.rosed.sMPEvents;
 
 import com.rosed.sMPEvents.Commands.DebugCommands;
+import com.rosed.sMPEvents.Commands.EventParticipation;
 import org.bukkit.plugin.java.JavaPlugin;
 import revxrsal.commands.Lamp;
 import revxrsal.commands.bukkit.BukkitLamp;
@@ -36,6 +37,7 @@ public final class SMPEvents extends JavaPlugin {
     private void registerCommands() {
         Lamp<BukkitCommandActor> lamp = BukkitLamp.builder(this).build();
         lamp.register(new DebugCommands());
+        lamp.register(new EventParticipation());
     }
 
     public static SMPEvents getInstance() { return instance; }
