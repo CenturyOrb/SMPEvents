@@ -1,11 +1,8 @@
 package com.rosed.sMPEvents.Commands;
 
 import com.rosed.sMPEvents.EventController;
-import com.rosed.sMPEvents.Events.Event;
-import com.rosed.sMPEvents.Events.EventGame;
 import com.rosed.sMPEvents.PlayerManager;
 import com.rosed.sMPEvents.SMPEvents;
-import com.rosed.sMPEvents.Utils.Util;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -48,6 +45,16 @@ public class DebugCommands {
         for (UUID uuid : EventController.getCurrentEvent().getPlayers()) {
             player.sendMessage(Component.text(Bukkit.getPlayer(uuid).getName()));
         }
+    }
+
+    @Command("printevent")
+    public void printevent(Player player) {
+        player.sendMessage(EventController.INSTANCE.getCurrentEvent().getClass().getSimpleName());
+    }
+
+    @Command("printstate")
+    public void printstate(Player player) {
+        player.sendMessage(EventController.INSTANCE.getCurrentEvent().getState().toString());
     }
 
 }

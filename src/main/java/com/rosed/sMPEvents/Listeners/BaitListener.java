@@ -1,4 +1,9 @@
 package com.rosed.sMPEvents.Listeners;
 
-public class BaitListener {
+import org.bukkit.event.Listener;
+
+public class BaitListener implements Listener {
+
+
+
 }

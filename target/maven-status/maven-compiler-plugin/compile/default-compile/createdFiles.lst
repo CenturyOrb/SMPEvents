@@ -2,6 +2,7 @@ com/rosed/sMPEvents/EventController$2.class
 com/rosed/sMPEvents/PlayerManager.class
 com/rosed/sMPEvents/EventState.class
 com/rosed/sMPEvents/Utils/Util.class
+com/rosed/sMPEvents/ConfigLocations.class
 com/rosed/sMPEvents/EventController.class
 com/rosed/sMPEvents/Commands/EventParticipation.class
 com/rosed/sMPEvents/Events/Event.class

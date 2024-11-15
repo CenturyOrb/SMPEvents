@@ -11,9 +11,10 @@ import revxrsal.commands.annotation.Command;
 public class EventParticipation {
 
     /**
-     * For players to use when want to join lobby
-     * if the game already started then that depends on game specific
-     * implementation
+     * For players to use when want to join lobby. Teleport players to the
+     * lobby if the event hasn't started yet. If it already started then
+     * teleport the player to the game spawn
+     * Some events does not allow players to join during LIVE
      * @param player player command sender
      */
     @Command("eventjoin")
@@ -23,35 +24,24 @@ public class EventParticipation {
             player.sendMessage("Already in event");
             return;
         }
-        // Save where the player location is currently
-        PlayerManager.getPlayerLoc().put(player.getUniqueId(), player.getLocation());
+
         // Add player to players list
-        if (!eventGame.addPlayer(player)) {
-            player.sendMessage(eventGame.getClass().getSimpleName() + " has already started. Cannot join");
-            return;
-        }
-        // save player current location
-        PlayerManager.getPlayerLoc().put(player.getUniqueId(), player.getLocation());
-        // teleport to wherever the lobby/event is if event allows
-        if (eventGame.getState() == EventState.PREPARE)
-            player.teleport(Bukkit.getWorld("Lobby").getSpawnLocation());
+        if (eventGame.addPlayer(player))
+            player.sendMessage("Event joined");
         else
-            player.sendMessage("Teleport to " + eventGame.getClass().getSimpleName() + " arena");
+            player.sendMessage("Event not joined");
     }
 
+    /**
+     * Player attempts to leave lobby
+     * @param player player command sender
+     */
     @Command("eventleave")
     public void eventLeave(Player player) {
-        // Teleport player to where they were before they joined the event
-        // Add player to the players list
         EventGame eventGame = EventController.getCurrentEvent();
-        if (!eventGame.getPlayers().contains(player.getUniqueId())) {
+        if (!eventGame.removePlayer(player)) {
             player.sendMessage("You are not in an event");
-            return;
         }
-
-        player.teleport(PlayerManager.getPlayerLoc().get(player.getUniqueId()));
-        eventGame.getPlayers().remove(player.getUniqueId());
-        PlayerManager.getPlayerLoc().remove(player.getUniqueId());
     }
 
 }

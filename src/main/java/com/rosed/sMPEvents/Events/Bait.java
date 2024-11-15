@@ -1,25 +1,16 @@
 package com.rosed.sMPEvents.Events;
 
+import com.rosed.sMPEvents.ConfigLocations;
 import com.rosed.sMPEvents.Utils.Util;
 import net.kyori.adventure.text.Component;
-import org.bukkit.entity.Player;
+import org.bukkit.Location;
 
 public class Bait extends EventGame {
 
-    @Override
-    public void start() {
-        Util.broadcastMessage(Component.text("Bait.start()"));
-    }
+    protected Location spawn = ConfigLocations.BAIT;
 
     @Override
     public void stop() {
         Util.broadcastMessage(Component.text("Bait.end()"));
-    }
-
-    @Override
-    public boolean addPlayer(Player player) {
-        player.sendMessage(Component.text("Bait.addPlayer(" + player.getName() + ")"));
-        playerUUIDs.add(player.getUniqueId());
-        return true;
     }
 }

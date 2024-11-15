@@ -12,7 +12,7 @@ public enum EventController {
 
     private BukkitTask eventTimer;
     private static EventGame currentEvent = null;
-    private static final int eventCountdownSeconds = 60 * 30; // testing with 30 minutes
+    private static final int eventCountdownSeconds = 60 * 5;
 
     /**
      * Repeating task that selects random event to run
@@ -21,13 +21,11 @@ public enum EventController {
         eventTimer = new BukkitRunnable() {
             @Override
             public void run() {
-                // select a random event and prepare //
                 currentEvent = Event.createRandomEvent();
                 Util.broadcastMessage(Component.text("Created random event"));
                 prepare();
-                Util.broadcastMessage(Component.text("hi"));
             }
-        }.runTaskTimer(SMPEvents.getInstance(), 0, 20 * 60 * 60); // testing with 60 minutes
+        }.runTaskTimer(SMPEvents.getInstance(), 0, 20 * 60 * 10);
     }
 
     /**
@@ -37,17 +35,12 @@ public enum EventController {
     private void prepare() {
         // change event state
         currentEvent.setState(EventState.PREPARE);
-        /**
-         * Gives 30 minutes for players to join the lobby
-         * last 15, 10, 5 minutes for player to join the lobby
-         * last 1 minute
-         * last 1-10 seconds
-         * run start after countdown is over (make sure to cancel the task)
-         */
         countdown();
-
     }
 
+    /**
+     * Starts 30 minutes countdown for players to join the server
+     */
     public static void countdown() {
         new BukkitRunnable() {
             int secondsPassed = -1;
@@ -55,14 +48,10 @@ public enum EventController {
             public void run() {
                 secondsPassed++; // 1 second passes
                 if (secondsPassed == eventCountdownSeconds) {
-                    // teleport players to the event map
                     currentEvent.start();
                     Util.broadcastMessage(Component.text("Teleport players to map"));
-
-                    // stop the countdown
                     cancel();
                 } else {
-                    // display server wide countdown
                     Util.broadcastCountdown(currentEvent, secondsPassed);
                 }
             }
