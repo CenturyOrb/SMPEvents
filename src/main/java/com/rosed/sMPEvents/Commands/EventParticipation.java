@@ -1,10 +1,9 @@
 package com.rosed.sMPEvents.Commands;
 
 import com.rosed.sMPEvents.EventController;
-import com.rosed.sMPEvents.EventState;
 import com.rosed.sMPEvents.Events.EventGame;
-import com.rosed.sMPEvents.PlayerManager;
-import org.bukkit.Bukkit;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.entity.Player;
 import revxrsal.commands.annotation.Command;
 
@@ -21,15 +20,11 @@ public class EventParticipation {
     public void eventJoin(Player player) {
         EventGame eventGame = EventController.getCurrentEvent();
         if (eventGame.getPlayers().contains(player.getUniqueId())) {
-            player.sendMessage("Already in event");
+            player.sendMessage(Component.text("Already in " + eventGame.getClass().getSimpleName() + " event").color(NamedTextColor.RED));
             return;
         }
 
-        // Add player to players list
-        if (eventGame.addPlayer(player))
-            player.sendMessage("Event joined");
-        else
-            player.sendMessage("Event not joined");
+        eventGame.addPlayer(player);
     }
 
     /**

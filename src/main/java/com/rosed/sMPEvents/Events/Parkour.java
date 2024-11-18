@@ -5,10 +5,16 @@ import com.rosed.sMPEvents.EventState;
 import com.rosed.sMPEvents.PlayerManager;
 import com.rosed.sMPEvents.Utils.Util;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 public class Parkour extends EventGame {
+
+    Parkour() {
+        super();
+        spawn = ConfigLocations.PARKOUR;
+    }
 
     @Override
     public void stop() {
@@ -23,6 +29,8 @@ public class Parkour extends EventGame {
         PlayerManager.getPlayerLoc().put(player.getUniqueId(), player.getLocation());
         Location loc = state == EventState.PREPARE ? ConfigLocations.LOBBY : spawn;
         player.teleport(loc);
+        player.sendMessage(Component.text("You have joined the " + getClass().getSimpleName() + " event").color(NamedTextColor.GOLD));
         return true;
     }
+
 }

@@ -12,7 +12,7 @@ public enum EventController {
 
     private BukkitTask eventTimer;
     private static EventGame currentEvent = null;
-    private static final int eventCountdownSeconds = 60 * 5;
+    private static final int eventCountdownSeconds = 60 * 1;
 
     /**
      * Repeating task that selects random event to run
@@ -33,7 +33,6 @@ public enum EventController {
      * Starts the lobby countdown
      */
     private void prepare() {
-        // change event state
         currentEvent.setState(EventState.PREPARE);
         countdown();
     }
@@ -49,7 +48,6 @@ public enum EventController {
                 secondsPassed++; // 1 second passes
                 if (secondsPassed == eventCountdownSeconds) {
                     currentEvent.start();
-                    Util.broadcastMessage(Component.text("Teleport players to map"));
                     cancel();
                 } else {
                     Util.broadcastCountdown(currentEvent, secondsPassed);
@@ -61,4 +59,5 @@ public enum EventController {
     public static EventGame getCurrentEvent() { return currentEvent; }
 
     public static int getEventCountdownSeconds() { return eventCountdownSeconds; }
+
 }

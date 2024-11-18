@@ -13,5 +13,4 @@ public class PlayerManager {
 
     public static void clear() { playerLoc.clear();}
 
-
 }

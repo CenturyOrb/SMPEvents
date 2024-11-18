@@ -17,7 +17,7 @@ public final class SMPEvents extends JavaPlugin {
         instance = this;
         startEventController();
         registerCommands();
-        getLogger().info("5");
+        getLogger().info("7");
     }
 
     @Override

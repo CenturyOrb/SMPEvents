@@ -6,9 +6,12 @@ import com.rosed.sMPEvents.SMPEvents;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
 import revxrsal.commands.annotation.Command;
+import revxrsal.commands.command.CommandActor;
 
+import java.util.List;
 import java.util.UUID;
 
 public class DebugCommands {
@@ -49,12 +52,18 @@ public class DebugCommands {
 
     @Command("printevent")
     public void printevent(Player player) {
-        player.sendMessage(EventController.INSTANCE.getCurrentEvent().getClass().getSimpleName());
+        player.sendMessage(EventController.getCurrentEvent().getClass().getSimpleName());
     }
 
     @Command("printstate")
     public void printstate(Player player) {
-        player.sendMessage(EventController.INSTANCE.getCurrentEvent().getState().toString());
+        player.sendMessage(EventController.getCurrentEvent().getState().toString());
+    }
+
+    @Command("printlistener")
+    public void printlistener(CommandActor sender) {
+        List<Listener> listeners = EventController.getCurrentEvent().getListeners();
+        listeners.forEach(listener -> SMPEvents.getInstance().getLogger().info(listener.getClass().getSimpleName()));
     }
 
 }
