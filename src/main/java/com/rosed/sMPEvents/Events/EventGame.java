@@ -1,7 +1,8 @@
 package com.rosed.sMPEvents.Events;
 
 import com.rosed.sMPEvents.*;
-import com.rosed.sMPEvents.Utils.Util;
+import com.rosed.sMPEvents.Utils.MessageUtil;
+import com.rosed.sMPEvents.Utils.SideBar.FastBoard;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
@@ -10,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,27 +21,34 @@ public abstract class EventGame {
     protected List<Listener> listeners;
     protected EventState state;
     protected Location spawn;
+    protected HashMap<UUID, FastBoard> boards;
 
     EventGame() {
         playerUUIDs = new ArrayList<>();
         listeners = new ArrayList<>();
         state = EventState.PREPARE;
         PlayerManager.getPlayerLoc().clear();
+        boards = new HashMap<>();
     }
 
     /**
      * Starts the event
      */
     public void start() {
+        if (playerUUIDs.isEmpty()) {
+            stop();
+            return;
+        }
         registerListeners();
         state = EventState.LIVE;
         playerUUIDs.forEach(uuid -> Bukkit.getPlayer(uuid).teleport(spawn));
-        Util.broadcastMessage(Component.text(getClass().getSimpleName() + " has started").color(NamedTextColor.GREEN));
+        startScoreboards();
+        MessageUtil.broadcastMessage(Component.text(getClass().getSimpleName() + " has started").color(NamedTextColor.GREEN));
     }
 
     public void stop() {
         unregisterListeners();
-        Util.broadcastMessage(Component.text(getClass().getSimpleName() + " event has ended").color(NamedTextColor.RED));
+        MessageUtil.broadcastMessage(Component.text(getClass().getSimpleName() + " event has ended").color(NamedTextColor.RED));
     };
 
     public void registerListeners() {
@@ -80,8 +89,19 @@ public abstract class EventGame {
         return true;
     }
 
+    /**
+     * Adds a board for all players that are currently online
+     */
+    protected abstract void startScoreboards();
+
+    /**
+     * Updates the board of all players that are currently online
+     */
+    public abstract void updateBoards();
+
     public EventState getState() { return state; }
     public void setState(EventState state) { this.state = state; }
 
     public List<Listener> getListeners() { return listeners; }
+
 }

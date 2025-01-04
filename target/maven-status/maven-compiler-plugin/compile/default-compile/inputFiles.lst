@@ -11,4 +11,8 @@
 /home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Listeners/PlayerConnectionListener.java
 /home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/PlayerManager.java
 /home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/SMPEvents.java
-/home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Utils/Util.java
+/home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Utils/DSUtil.java
+/home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Utils/MessageUtil.java
+/home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Utils/SideBar/FastBoard.java
+/home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Utils/SideBar/FastBoardBase.java
+/home/rosed/Documents/GitHub/SMPEvents/src/main/java/com/rosed/sMPEvents/Utils/SideBar/FastReflection.java

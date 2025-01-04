@@ -2,7 +2,7 @@ package com.rosed.sMPEvents;
 
 import com.rosed.sMPEvents.Events.Event;
 import com.rosed.sMPEvents.Events.EventGame;
-import com.rosed.sMPEvents.Utils.Util;
+import com.rosed.sMPEvents.Utils.MessageUtil;
 import net.kyori.adventure.text.Component;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -22,7 +22,7 @@ public enum EventController {
             @Override
             public void run() {
                 currentEvent = Event.createRandomEvent();
-                Util.broadcastMessage(Component.text("Created random event"));
+                MessageUtil.broadcastMessage(Component.text("Created random event"));
                 prepare();
             }
         }.runTaskTimer(SMPEvents.getInstance(), 0, 20 * 60 * 10);
@@ -50,7 +50,7 @@ public enum EventController {
                     currentEvent.start();
                     cancel();
                 } else {
-                    Util.broadcastCountdown(currentEvent, secondsPassed);
+                    MessageUtil.broadcastCountdown(currentEvent, secondsPassed);
                 }
             }
         }.runTaskTimer(SMPEvents.getInstance(), 0,20);

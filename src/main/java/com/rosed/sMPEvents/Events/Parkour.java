@@ -3,7 +3,7 @@ package com.rosed.sMPEvents.Events;
 import com.rosed.sMPEvents.ConfigLocations;
 import com.rosed.sMPEvents.EventState;
 import com.rosed.sMPEvents.PlayerManager;
-import com.rosed.sMPEvents.Utils.Util;
+import com.rosed.sMPEvents.Utils.MessageUtil;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Location;
@@ -18,7 +18,7 @@ public class Parkour extends EventGame {
 
     @Override
     public void stop() {
-        Util.broadcastMessage(Component.text("Parkour.stop()"));
+        MessageUtil.broadcastMessage(Component.text("Parkour.stop()"));
     }
 
     @Override
@@ -32,5 +32,16 @@ public class Parkour extends EventGame {
         player.sendMessage(Component.text("You have joined the " + getClass().getSimpleName() + " event").color(NamedTextColor.GOLD));
         return true;
     }
+
+    @Override
+    protected void startScoreboards() {
+
+    }
+
+    @Override
+    public void updateBoards() {
+
+    }
+
 
 }

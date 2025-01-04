@@ -8,7 +8,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.apache.commons.lang3.ArrayUtils;
 import org.bukkit.Bukkit;
 
-public class Util {
+public class MessageUtil {
 
     private static int[] intervals = {1800, 900, 600, 300, 60, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
